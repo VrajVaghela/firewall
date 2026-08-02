@@ -47,6 +47,12 @@ export default {
         "proto-other-strong": "hsl(var(--proto-other-strong) / <alpha-value>)",
       },
       borderRadius: { lg: "var(--radius)", md: "calc(var(--radius) - 2px)" },
+      // A table's sticky header does not scroll, so it never loses width to the scrollbar
+      // the way its body does — right-aligned columns drift apart by exactly the bar's
+      // width. This is the body's `px-3` plus that width, applied to the header alone; the
+      // body reserves the gutter unconditionally (`.scrollbar-gutter-stable`) so the two
+      // agree whether or not the rows currently overflow.
+      padding: { "table-gutter": "calc(0.75rem + var(--scrollbar-size))" },
       // 8% tints for selected and blocked table rows (ui_rules.md §5); the rest of the
       // scale is Tailwind's default.
       opacity: { 8: "0.08" },

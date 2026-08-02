@@ -61,3 +61,12 @@ Variants via `cva`:
 - **Never encode meaning by color alone** — pair status color with an icon/label (colorblind users). Protocol legend always labeled.
 - Full keyboard nav: visible focus ring on every interactive element, logical tab order, table row keyboard selection, `Esc` closes drawers/modals. Respect `prefers-reduced-motion`.
 - Hit targets ≥ 32px. Tooltips for icon-only controls.
+
+## 11. Scrollbars
+The platform default — light track, stepper arrows, square corners, full-bleed to the border — is the one piece of chrome the app doesn't otherwise draw, and it reads as unfinished against a dark Geist surface. Every scroll container in the app is styled globally in `src/styles/index.css` (values from `ui_tokens.md` §7):
+
+- **Track transparent, no steppers.** The thumb floats over the content it scrolls; a painted track reads as an extra vertical border beside the table's own. `::-webkit-scrollbar-button { display: none }` removes the arrows.
+- **Thumb = a `--radius` pill inset `--scrollbar-thumb-inset` from a `--scrollbar-size` track.** The inset is a transparent border with `background-clip: padding-box`, so the *hit target* stays the full 12px while the *paint* is 6px — thin look, comfortable grab.
+- **Use `::-webkit-scrollbar-*`, not `scrollbar-width`/`scrollbar-color`.** In Chromium (and therefore WebView2) setting either standard property makes the engine ignore the pseudo-elements entirely and fall back to its own thin bar — you cannot mix them, and only the pseudo-elements can drop the steppers and inset the thumb.
+- **`color-scheme` is set per theme** on `:root`/`.dark` so chrome the engine draws itself — native `<select>` popups and their scrollbars — follows the theme instead of flashing a light panel.
+- **Tables reserve the gutter.** Scroll bodies take `.scrollbar-gutter-stable` and their sticky headers take `pr-table-gutter`. A header doesn't scroll, so it never loses width to the bar the way its body does; without both, right-aligned columns (Bytes, Duration) drift by the bar's width, and a table that grows past its height shifts every column mid-stream.

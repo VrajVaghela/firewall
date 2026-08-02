@@ -92,4 +92,13 @@ Add a row with: **Name** (PascalCase), **File** (`src/components/...`, kebab-cas
 | clipboard | `lib/clipboard.ts` | `copyToClipboard` with success/failure toast | built |
 | overlay-stack | `lib/overlay-stack.ts` | Tracks stacked dismissible overlays so Esc closes only the topmost one (Modal/Drawer/Menu) | built |
 
+## Global CSS (`src/styles/index.css`)
+Not components, but shared classes and global chrome every view inherits — check here before hand-rolling equivalent styles.
+| Class / rule | Purpose | Status |
+|---|---|---|
+| `::-webkit-scrollbar-*` (global) | Tokenized scrollbars for every scroll container: transparent track, inset `--radius` pill thumb, no steppers (`ui_rules.md` §11). No per-component opt-in needed | built |
+| `color-scheme` on `:root` / `.dark` | Themes the chrome the engine draws itself — native `<select>` popups and their scrollbars | built |
+| `.scrollbar-gutter-stable` | Reserves the scrollbar's width on a table body so its columns don't shift when rows start overflowing; pairs with `pr-table-gutter` on the sticky header | built |
+| `.virt-row`, `.virt-row-selected`, `.virt-row-blocked` | Opaque row background + 8% tints for virtualized rows, so a fast-prepending table repaints cleanly (`ui_rules.md` §5) | built |
+
 *(Statuses update as phases in `build_plan.md` complete. New components — add a row before merging.)*

@@ -152,3 +152,24 @@ Letter-spacing: slight negative (`-0.01em`) on headings, normal elsewhere.
 ## 6. Density & Z-index
 - Two densities: default (36px rows) and compact (28px) toggle for power users.
 - Z-index scale: base `0`, sticky header `10`, dropdown `20`, drawer/inspector `30`, modal `40`, toast `50`.
+
+## 7. Scrollbars
+Scrollbars are **chrome, not content**, so they get their own neutral pair rather than reusing `border-strong` (too dark on near-black: 1.6:1) or `foreground-subtle` (reads as text weight). Rendering behaviour is `ui_rules.md` §11.
+
+```css
+:root {
+  --scrollbar-size:        12px;      /* track width = hit target */
+  --scrollbar-thumb-inset: 3px;       /* → a 6px visible pill inside a 12px target */
+  --scrollbar-thumb:       0 0% 52%;
+  --scrollbar-thumb-hover: 0 0% 35%;
+}
+.dark {
+  --scrollbar-thumb:       0 0% 45%;
+  --scrollbar-thumb-hover: 0 0% 60%;
+}
+```
+
+- **Off the 4px scale on purpose.** 12px is the smallest bar that stays comfortably grabbable with a mouse while reading as a hairline; it is a pointer-ergonomics figure, not layout spacing.
+- The thumb is a **non-text UI mark over a transparent track**, so it must hold **3:1 on `background`, `surface` *and* `surface-muted`** — it crosses all three. Worst case is 3.40:1 (light) / 3.68:1 (dark), enforced by `scripts/check-contrast.mjs`.
+- Hover always moves **toward** more contrast: darker in light mode, lighter in dark.
+- `pr-table-gutter` (`calc(0.75rem + var(--scrollbar-size))`) is the table-header padding that keeps a non-scrolling header aligned with its scrolling body.

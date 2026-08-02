@@ -42,6 +42,8 @@ const LIGHT = {
   "proto-icmp-strong": [0, 0, 39],
   "proto-other": [0, 0, 65],
   "proto-other-strong": [0, 0, 41],
+  "scrollbar-thumb": [0, 0, 52],
+  "scrollbar-thumb-hover": [0, 0, 35],
 };
 
 const DARK = {
@@ -77,6 +79,8 @@ const DARK = {
   "proto-icmp-strong": [0, 0, 60],
   "proto-other": [0, 0, 45],
   "proto-other-strong": [0, 0, 54],
+  "scrollbar-thumb": [0, 0, 45],
+  "scrollbar-thumb-hover": [0, 0, 60],
 };
 
 /**
@@ -146,6 +150,13 @@ const PAIRS = [
   { ink: "proto-icmp-strong", on: "surface-muted", min: 3, where: "ICMP bar segment + legend dot" },
   { ink: "proto-other-strong", on: "surface-muted", min: 3, where: "Other bar segment + legend dot" },
   { ink: "primary-strong", on: "surface", tint: 0.08, tintWith: "primary", min: 3, where: "selected-row accent bar" },
+  // The scrollbar track is transparent, so the thumb is a UI mark on whatever it crosses:
+  // `surface` in a table body, `surface-muted` on the row under the cursor, `background`
+  // on the page itself. All three have to hold 3:1.
+  { ink: "scrollbar-thumb", on: "background", min: 3, where: "scrollbar thumb on the page" },
+  { ink: "scrollbar-thumb", on: "surface", min: 3, where: "scrollbar thumb in a table body" },
+  { ink: "scrollbar-thumb", on: "surface-muted", min: 3, where: "scrollbar thumb over a hovered row" },
+  { ink: "scrollbar-thumb-hover", on: "surface-muted", min: 3, where: "scrollbar thumb, grabbed" },
   // Borders are deliberately excluded. `ui_tokens.md` §4 specifies 1px hairlines as
   // decoration — the Geist look depends on them being quiet — and no state is conveyed by
   // a border alone: an invalid field pairs `border-danger` with text, and focus uses a 2px

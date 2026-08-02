@@ -83,7 +83,7 @@ export function LiveTrafficTable({ packets, filtered }: LiveTrafficTableProps): 
     <div className="overflow-hidden rounded-md border border-border">
       <div
         className={cn(
-          "grid items-center gap-3 border-b border-border bg-surface px-3 py-2 text-xs font-medium uppercase tracking-wide text-foreground-muted",
+          "grid items-center gap-3 border-b border-border bg-surface py-2 pl-3 pr-table-gutter text-xs font-medium uppercase tracking-wide text-foreground-muted",
           COLUMNS,
         )}
       >
@@ -95,7 +95,11 @@ export function LiveTrafficTable({ packets, filtered }: LiveTrafficTableProps): 
         <span>Detail</span>
         <span className="text-right">Bytes</span>
       </div>
-      <div ref={scrollRef} className="h-table-body overflow-auto" onKeyDown={onKeyDown}>
+      <div
+        ref={scrollRef}
+        className="h-table-body scrollbar-gutter-stable overflow-auto bg-surface"
+        onKeyDown={onKeyDown}
+      >
         <div style={{ height: virtualizer.getTotalSize(), position: "relative" }}>
           {virtualizer.getVirtualItems().map((row) => {
             const packet = packets[row.index];
@@ -150,11 +154,11 @@ function PacketRow({
       tabIndex={tabbable ? 0 : -1}
       onClick={() => onSelect(packet.id, index)}
       className={cn(
-        "absolute left-0 grid w-full items-center gap-3 border-b border-border px-3 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+        "virt-row absolute left-0 grid w-full items-center gap-3 border-b border-border px-3 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
         COLUMNS,
-        selected ? "bg-primary/8" : "hover:bg-surface-muted",
+        selected ? "virt-row-selected" : "hover:bg-surface-muted",
       )}
-      style={{ height, transform: `translateY(${offset}px)` }}
+      style={{ height, top: offset }}
     >
       {/* 2px accent bar for the selected row, drawn over the row so nothing shifts
           (`ui_rules.md` §5). */}

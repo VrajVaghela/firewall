@@ -58,7 +58,7 @@ export function RulesTable({ rules, loading, onEdit, onDelete }: RulesTableProps
     <div className="overflow-hidden rounded-md border border-border">
       <div
         className={cn(
-          "grid items-center gap-3 border-b border-border bg-surface px-3 py-2 text-xs font-medium uppercase tracking-wide text-foreground-muted",
+          "grid items-center gap-3 border-b border-border bg-surface py-2 pl-3 pr-table-gutter text-xs font-medium uppercase tracking-wide text-foreground-muted",
           COLUMNS,
         )}
       >
@@ -71,7 +71,7 @@ export function RulesTable({ rules, loading, onEdit, onDelete }: RulesTableProps
         <span className="text-right">Hits</span>
         <span className="text-right">Manage</span>
       </div>
-      <div ref={scrollRef} className="max-h-table-body overflow-auto">
+      <div ref={scrollRef} className="max-h-table-body scrollbar-gutter-stable overflow-auto bg-surface">
         <div style={{ height: virtualizer.getTotalSize(), position: "relative" }}>
           {virtualizer.getVirtualItems().map((row) => {
             const rule = rules[row.index];
@@ -109,11 +109,11 @@ function RuleRow({ rule, offset, height, onEdit, onDelete }: RuleRowProps): JSX.
   return (
     <div
       className={cn(
-        "group absolute left-0 grid w-full items-center gap-3 border-b border-border px-3 text-sm hover:bg-surface-muted",
+        "virt-row group absolute left-0 grid w-full items-center gap-3 border-b border-border px-3 text-sm hover:bg-surface-muted",
         COLUMNS,
         !rule.enabled && "text-foreground-muted",
       )}
-      style={{ height, transform: `translateY(${offset}px)` }}
+      style={{ height, top: offset }}
     >
       <Switch
         checked={rule.enabled}
