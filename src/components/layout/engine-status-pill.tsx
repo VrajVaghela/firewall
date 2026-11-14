@@ -52,7 +52,7 @@ function describe(
       tone: "danger",
       label: "Engine unavailable",
       icon: ICONS.danger,
-      detail: status?.error ?? "Relaunch Cognton as Administrator to capture and enforce.",
+      detail: status?.error ?? "Relaunch Firewall as Administrator to capture and enforce.",
     };
   }
   if (enforcement === null) {

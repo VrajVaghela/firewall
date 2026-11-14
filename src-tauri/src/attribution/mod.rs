@@ -275,7 +275,7 @@ pub fn default_backend() -> Arc<dyn AttributionBackend> {
     Arc::new(UnsupportedAttribution)
 }
 
-/// Cognton targets Windows; this keeps `cargo check` honest on other hosts.
+/// Firewall targets Windows; this keeps `cargo check` honest on other hosts.
 #[cfg(not(windows))]
 struct UnsupportedAttribution;
 

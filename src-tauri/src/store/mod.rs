@@ -40,7 +40,7 @@ pub struct Store {
 impl Store {
     pub fn open(app_data_dir: &Path) -> Result<Self, StoreError> {
         fs::create_dir_all(app_data_dir)?;
-        let path = app_data_dir.join("cognton.sqlite3");
+        let path = app_data_dir.join("firewall.sqlite3");
         let connection = Connection::open(&path)?;
         migrations::run(&connection)?;
         Ok(Self {

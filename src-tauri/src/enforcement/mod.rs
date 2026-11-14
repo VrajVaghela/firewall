@@ -1,4 +1,4 @@
-//! Active enforcement: the path that makes Cognton a firewall rather than a monitor.
+//! Active enforcement: the path that makes Firewall a firewall rather than a monitor.
 //!
 //! Two WinDivert handles do different jobs and are deliberately independent of the Npcap
 //! visibility path (`architecture.md` §5 rule 4):
@@ -24,7 +24,7 @@ use crate::model::TransportProtocol;
 
 #[derive(Debug, Error)]
 pub enum EnforcementError {
-    #[error("the WinDivert driver could not be opened ({0}). Install WinDivert 2.x and run Cognton as Administrator.")]
+    #[error("the WinDivert driver could not be opened ({0}). Install WinDivert 2.x and run Firewall as Administrator.")]
     Open(String),
     #[error("the WinDivert {layer} handle failed: {message}")]
     Handle {
@@ -103,7 +103,7 @@ pub fn default_backend() -> Arc<dyn EnforcementBackend> {
     Arc::new(UnsupportedBackend)
 }
 
-/// Cognton targets Windows; this keeps `cargo check` honest on other hosts.
+/// Firewall targets Windows; this keeps `cargo check` honest on other hosts.
 #[cfg(not(windows))]
 struct UnsupportedBackend;
 

@@ -28,8 +28,8 @@ describe("SettingsPage", () => {
     vi.mocked(ipc.getSystemHealth).mockResolvedValue({
       isElevated: true,
       databaseReady: true,
-      databasePath: "cognton.sqlite3",
-      logDirectory: "C:\\AppData\\Cognton\\logs",
+      databasePath: "firewall.sqlite3",
+      logDirectory: "C:\\AppData\\Firewall\\logs",
       npcapAvailable: true,
       activeInterfacesCount: 2,
       activeFlowsCount: 15,
@@ -69,7 +69,7 @@ describe("SettingsPage", () => {
     vi.mocked(ipc.getSystemHealth).mockResolvedValue({
       isElevated: true,
       databaseReady: true,
-      databasePath: "cognton.sqlite3",
+      databasePath: "firewall.sqlite3",
       logDirectory: "logs",
       npcapAvailable: true,
       activeInterfacesCount: 1,
@@ -126,7 +126,7 @@ describe("SettingsPage", () => {
     vi.mocked(ipc.getSystemHealth).mockResolvedValue({
       isElevated: true,
       databaseReady: true,
-      databasePath: "cognton.sqlite3",
+      databasePath: "firewall.sqlite3",
       logDirectory: "logs",
       npcapAvailable: true,
       activeInterfacesCount: 1,

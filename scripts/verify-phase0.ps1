@@ -198,7 +198,7 @@ $results.Add([pscustomobject]@{
         Detail = if ($isAdministrator) { 'elevated' } else { 'not elevated' }
     })
 
-Write-Host 'Cognton Phase 0 prerequisite verification'
+Write-Host 'Firewall Phase 0 prerequisite verification'
 Write-Host ''
 $results | Format-Table -AutoSize
 

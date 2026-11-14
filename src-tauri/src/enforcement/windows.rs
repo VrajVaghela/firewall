@@ -25,7 +25,7 @@ use super::{
 };
 use crate::model::TransportProtocol;
 
-/// Loopback is deliberately excluded: diverting it would put Cognton between local-only
+/// Loopback is deliberately excluded: diverting it would put Firewall between local-only
 /// services (including the dev server) and the stack for no security benefit. Rules
 /// therefore govern traffic that actually leaves or enters the host.
 const NETWORK_FILTER: &str = "(ip || ipv6) && !loopback";
@@ -151,7 +151,7 @@ impl Watcher {
         let done = Arc::new(AtomicBool::new(false));
         let thread_done = Arc::clone(&done);
         let join = thread::Builder::new()
-            .name("cognton-sockets-stop".to_owned())
+            .name("firewall-sockets-stop".to_owned())
             .spawn(move || {
                 while !thread_done.load(Ordering::Relaxed) {
                     if stop.load(Ordering::Relaxed) {

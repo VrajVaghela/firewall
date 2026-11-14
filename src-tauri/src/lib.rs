@@ -29,7 +29,7 @@ pub fn run() -> anyhow::Result<()> {
                 Ok(store) => AppState::new(Arc::new(store), None),
                 Err(error) => {
                     tracing::error!(%error, "database initialization failed");
-                    let fallback_dir = std::env::temp_dir().join("cognton-fallback");
+                    let fallback_dir = std::env::temp_dir().join("firewall-fallback");
                     let store =
                         store::Store::open(&fallback_dir).context("open fallback database")?;
                     AppState::new(
@@ -76,7 +76,7 @@ pub fn run() -> anyhow::Result<()> {
 fn init_logging() -> anyhow::Result<()> {
     let log_dir = log_directory()?;
     fs::create_dir_all(&log_dir).context("create log directory")?;
-    let file_appender = tracing_appender::rolling::daily(log_dir, "cognton.log");
+    let file_appender = tracing_appender::rolling::daily(log_dir, "firewall.log");
     tracing_subscriber::registry()
         .with(EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("info")))
         .with(
@@ -91,7 +91,7 @@ fn init_logging() -> anyhow::Result<()> {
 
 pub fn log_directory() -> anyhow::Result<PathBuf> {
     dirs::data_local_dir()
-        .map(|path| path.join("Cognton").join("logs"))
+        .map(|path| path.join("Firewall").join("logs"))
         .context("resolve local application data directory")
 }
 

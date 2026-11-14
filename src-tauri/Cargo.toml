@@ -1,16 +1,17 @@
 [package]
-name = "cognton"
+name = "firewall"
 version = "0.1.0"
 description = "A local Windows firewall and network inspector"
-authors = ["Cognton"]
+authors = ["Vraj Vaghela"]
+license = "MIT"
 edition = "2021"
 
 [lib]
-name = "cognton_lib"
+name = "firewall_lib"
 crate-type = ["lib"]
 
 [[bin]]
-name = "cognton"
+name = "firewall"
 path = "src/main.rs"
 test = false
 

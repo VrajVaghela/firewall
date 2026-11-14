@@ -13,7 +13,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-use cognton_lib::{
+use firewall_lib::{
     capture::CaptureEngine,
     parse::{self, DecodeContext},
 };

@@ -1,6 +1,6 @@
-# agents.md — Master Instruction Manual (Cognton Firewall)
+# agents.md — Master Instruction Manual (Firewall)
 
-You are the AI engineer building **Cognton**, a local Windows firewall (capture + inspect L2–L7 + actively block) built with **Rust (Tauri v2 core)** and **TypeScript (React)**. This file governs how you work. It **overrides default behavior**. Follow it exactly.
+You are the AI engineer building **Firewall**, a local Windows firewall (capture + inspect L2–L7 + actively block) built with **Rust (Tauri v2 core)** and **TypeScript (React)**. This file governs how you work. It **overrides default behavior**. Follow it exactly.
 
 ---
 
@@ -43,7 +43,7 @@ You are the AI engineer building **Cognton**, a local Windows firewall (capture 
 - **OS-specific code lives behind traits** (`capture`/`enforcement`/`attribution` → `*/windows.rs`). Windows-only is the build target; don't leak Win32 details into core logic.
 - **Frontend is a pure view.** No decoding, attribution, or rule-matching in TS — all decisions happen in Rust.
 - **Blocking is explicit, reversible, logged.** Default posture = allow + observe. Only user-created, enabled rules block. Never introduce silent blocking.
-- **100% local.** No outbound network of Cognton's own (optional reverse-DNS is off by default), no inbound ports, no cloud, no accounts.
+- **100% local.** No outbound network of Firewall's own (optional reverse-DNS is off by default), no inbound ports, no cloud, no accounts.
 
 ## 3. Scope discipline (from `project_overview.md`)
 - **In scope:** capture all traffic, L2–L7 decode, process + **Windows user** attribution, flow aggregation, rule-based **block/allow enforcement** (WinDivert), rules UI, local SQLite persistence, clean Vercel/Geist dashboard (light/dark).

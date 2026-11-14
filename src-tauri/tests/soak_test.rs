@@ -17,7 +17,7 @@ use std::{
 };
 
 use chrono::Utc;
-use cognton_lib::{
+use firewall_lib::{
     attribution::AttributionResolver,
     flow::{FlowTable, FlowTracker},
     ipc::ring::PacketRing,
@@ -34,7 +34,7 @@ use fixtures::{l7 as payloads, *};
 const RING_CAPACITY: usize = 20_000;
 /// The production live-flow cap, referenced rather than duplicated so the bound under
 /// test cannot drift away from the one the app actually uses.
-const FLOW_CAPACITY: usize = cognton_lib::flow::DEFAULT_CAPACITY;
+const FLOW_CAPACITY: usize = firewall_lib::flow::DEFAULT_CAPACITY;
 const PACKET_COUNT: usize = 50_000;
 
 fn context() -> DecodeContext {

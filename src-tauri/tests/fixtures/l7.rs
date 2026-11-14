@@ -65,7 +65,7 @@ fn encode_name(name: &str) -> Vec<u8> {
 }
 
 pub fn http_get_request() -> Vec<u8> {
-    b"GET /index.html HTTP/1.1\r\nHost: example.com\r\nUser-Agent: cognton-test\r\nAccept: */*\r\n\r\n"
+    b"GET /index.html HTTP/1.1\r\nHost: example.com\r\nUser-Agent: firewall-test\r\nAccept: */*\r\n\r\n"
         .to_vec()
 }
 

@@ -1,4 +1,4 @@
-# Cognton Firewall
+# Firewall
 
 > Next-generation high-performance Windows network analyzer & firewall with L2–L7 packet decode, process & Windows user attribution, and kernel-level WinDivert enforcement.
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-Cognton is an elevated Windows firewall and traffic inspection application built with **Tauri v2**, **Rust**, and **React**. It brings kernel-level packet filtering, real-time protocol breakdown, process path and Windows user attribution, and low-latency rule enforcement into a sleek Vercel/Geist-inspired desktop UI.
+Firewall is an elevated Windows firewall and traffic inspection application built with **Tauri v2**, **Rust**, and **React**. It brings kernel-level packet filtering, real-time protocol breakdown, process path and Windows user attribution, and low-latency rule enforcement into a sleek Vercel/Geist-inspired desktop UI.
 
 ---
 
@@ -26,7 +26,7 @@ Cognton is an elevated Windows firewall and traffic inspection application built
 1. **Windows 10/11 64-bit**
 2. **Npcap Driver**: Install Npcap with **"WinPcap API-compatible mode"** checked.
 3. **WinDivert Runtime**: `WinDivert.dll` and `WinDivert64.sys` staged in the output folder (automatically handled by `build.rs` or bundled by installer).
-4. **Administrator Privileges**: Cognton must be launched with elevated privileges ("Run as Administrator") for Npcap interface binding and WinDivert kernel driver handles.
+4. **Administrator Privileges**: Firewall must be launched with elevated privileges ("Run as Administrator") for Npcap interface binding and WinDivert kernel driver handles.
 
 ---
 
@@ -36,8 +36,8 @@ Cognton is an elevated Windows firewall and traffic inspection application built
 
 ```powershell
 # 1. Clone repo & install frontend dependencies
-git clone https://github.com/vraj/cognton.git
-cd cognton
+git clone https://github.com/VrajVaghela/firewall.git
+cd firewall
 npm install
 
 # 2. Run backend tests (in src-tauri)
@@ -62,7 +62,7 @@ Installers land under `src-tauri/target/release/bundle/`.
 
 `WinDivert.dll` and `WinDivert64.sys` are bundled into the resource root, which on Windows
 is the install directory itself — the DLL is a load-time import of the executable, so it
-must sit directly beside `Cognton.exe`, and `WinDivertOpen` loads the `.sys` driver
+must sit directly beside `Firewall.exe`, and `WinDivertOpen` loads the `.sys` driver
 relative to the DLL's own folder.
 
 **Npcap is not bundled.** Its licence does not permit redistribution without a paid OEM
@@ -96,6 +96,10 @@ nothing to observe.
 
 ---
 
-## License & Compliance
+## Privacy
 
 All network packet interception and rule enforcement operate strictly **locally** on your device. Zero metrics or packet data are transmitted off the system.
+
+## License
+
+Firewall is released under the [MIT License](LICENSE). Copyright (c) 2026 Vraj Vaghela.

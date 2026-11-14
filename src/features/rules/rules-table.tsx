@@ -49,7 +49,7 @@ export function RulesTable({ rules, loading, onEdit, onDelete }: RulesTableProps
       <EmptyState
         icon={<ShieldCheck aria-hidden size={20} />}
         title="No rules yet"
-        description="Cognton observes without blocking until you add a rule. Create one here, or right-click a connection to build one from live traffic."
+        description="Firewall observes without blocking until you add a rule. Create one here, or right-click a connection to build one from live traffic."
       />
     );
   }

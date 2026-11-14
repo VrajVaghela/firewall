@@ -13,7 +13,7 @@
 
 use std::{sync::Arc, time::Instant};
 
-use cognton_lib::{attribution::AttributionResolver, model::FlowKey};
+use firewall_lib::{attribution::AttributionResolver, model::FlowKey};
 
 fn main() {
     let limit: usize = std::env::args()
@@ -21,7 +21,7 @@ fn main() {
         .and_then(|value| value.parse().ok())
         .unwrap_or(25);
 
-    let backend = cognton_lib::attribution::default_backend();
+    let backend = firewall_lib::attribution::default_backend();
     let rows = match backend.connections() {
         Ok(rows) => rows,
         Err(error) => {
