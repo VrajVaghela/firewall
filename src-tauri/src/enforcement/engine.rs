@@ -39,7 +39,7 @@ const MAINTENANCE_TICK: Duration = Duration::from_millis(250);
 /// What the UI needs to render the enforcement half of the engine-status pill.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct EnforcementStatus {
-    /// True once a WinDivert handle has opened — i.e. the driver is present and Cognton
+    /// True once a WinDivert handle has opened — i.e. the driver is present and Firewall
     /// is elevated enough to use it.
     pub available: bool,
     /// True while the network-layer handle is intercepting packets.
@@ -275,7 +275,7 @@ impl EnforcementEngine {
             let engine = Arc::clone(self);
             Arc::new(move |meta: &PacketMeta| engine.decide(meta))
         };
-        let worker = self.spawn("cognton-enforce", "network", move |ready, stop| {
+        let worker = self.spawn("firewall-enforce", "network", move |ready, stop| {
             engine.backend.run_network(decide, ready, stop)
         });
         if let Some(worker) = worker {
@@ -293,7 +293,7 @@ impl EnforcementEngine {
             let engine = Arc::clone(self);
             Arc::new(move |event: SocketEvent| engine.observe(event))
         };
-        let worker = self.spawn("cognton-sockets", "socket", move |ready, stop| {
+        let worker = self.spawn("firewall-sockets", "socket", move |ready, stop| {
             engine.backend.run_socket(observe, ready, stop)
         });
         if let Some(worker) = worker {
@@ -354,7 +354,7 @@ impl EnforcementEngine {
         let thread_stop = Arc::clone(&stop);
         let thread_live = Arc::clone(&live);
         let spawned = thread::Builder::new()
-            .name("cognton-enforce-hits".to_owned())
+            .name("firewall-enforce-hits".to_owned())
             .spawn(move || {
                 let mut since_flush = Duration::ZERO;
                 while !thread_stop.load(Ordering::Relaxed) {

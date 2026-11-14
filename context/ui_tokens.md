@@ -1,4 +1,4 @@
-# UI Tokens — Cognton Firewall
+# UI Tokens — Firewall
 
 Design primitives. **Every visual value in the app comes from here.** No raw hex/px in components. Aesthetic: **Vercel / Geist** — minimal, high-contrast, monochrome base with restrained accent and semantic colors. Implemented as CSS variables (HSL) consumed by `tailwind.config.ts`.
 

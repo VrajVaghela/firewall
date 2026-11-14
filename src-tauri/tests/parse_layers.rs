@@ -2,7 +2,7 @@
 
 mod fixtures;
 
-use cognton_lib::{
+use firewall_lib::{
     model::{
         layers::{L3Detail, L4Detail},
         Direction, L7Protocol,

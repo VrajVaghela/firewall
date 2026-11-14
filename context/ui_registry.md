@@ -1,4 +1,4 @@
-# UI Registry — Cognton Firewall
+# UI Registry — Firewall
 
 > **Living document.** Every reusable UI component **must** be logged here the moment it's created, and updated when its API changes. Before building a new component, **search this file first** — reuse or extend an existing one instead of duplicating. A component that isn't here doesn't exist for reuse purposes.
 

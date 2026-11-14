@@ -20,7 +20,7 @@ use std::{
 };
 
 use chrono::Utc;
-use cognton_lib::{
+use firewall_lib::{
     attribution::AttributionResolver,
     enforcement::{self, EnforcementEngine},
     flow::FlowTracker,

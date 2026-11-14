@@ -1,4 +1,4 @@
-# UI Rules — Cognton Firewall
+# UI Rules — Firewall
 
 Visual + interaction behavior for global elements. All values reference `ui_tokens.md`. Guiding principle: **Vercel/Geist minimalism** — flat surfaces, hairline borders, monochrome base, one accent, generous whitespace, data-dense but calm. The product is a serious security tool: **clarity and trust over decoration.**
 

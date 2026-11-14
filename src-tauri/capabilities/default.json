@@ -1,7 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Minimal permissions for Cognton's main window.",
+  "description": "Minimal permissions for Firewall's main window.",
   "windows": ["main"],
   "permissions": [
     "core:default",

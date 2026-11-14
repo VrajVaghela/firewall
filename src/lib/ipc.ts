@@ -24,7 +24,7 @@ export function isTauriAvailable(): boolean {
 function safeInvoke<T>(cmd: string, args?: Record<string, unknown>): Promise<T> {
   if (!isTauriAvailable()) {
     return Promise.reject(
-      "Running in web browser mode — Cognton requires the native Tauri desktop shell to access Windows packet drivers. Launch the native desktop application window.",
+      "Running in web browser mode — Firewall requires the native Tauri desktop shell to access Windows packet drivers. Launch the native desktop application window.",
     );
   }
   return invoke<T>(cmd, args);
@@ -70,7 +70,7 @@ export async function subscribePacketStream(
 ): Promise<void> {
   if (!isTauriAvailable()) {
     return Promise.reject(
-      "Running in web browser mode — Cognton requires the native Tauri desktop shell to access Windows packet drivers.",
+      "Running in web browser mode — Firewall requires the native Tauri desktop shell to access Windows packet drivers.",
     );
   }
   const channel = new Channel<StreamMessage>();

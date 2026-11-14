@@ -342,7 +342,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "cognton"
+name = "firewall"
 version = "0.1.0"
 dependencies = [
  "anyhow",

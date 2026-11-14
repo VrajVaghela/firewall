@@ -12,7 +12,7 @@ use std::{
 };
 
 use chrono::{DateTime, Duration, Utc};
-use cognton_lib::{
+use firewall_lib::{
     attribution::{
         AttributionBackend, AttributionError, AttributionResolver, ConnectionOwner, ProcessInfo,
     },

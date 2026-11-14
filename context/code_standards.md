@@ -1,4 +1,4 @@
-# Code Standards — Cognton Firewall
+# Code Standards — Firewall
 
 Applies to the whole repo. These are **rules, not suggestions**. When a request conflicts with them, stop and flag it (see `agents.md`).
 

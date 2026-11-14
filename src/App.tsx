@@ -57,7 +57,7 @@ export default function App(): JSX.Element {
 
   return (
     <AppShell
-      title={TITLES[location.pathname] ?? "Cognton"}
+      title={TITLES[location.pathname] ?? "Firewall"}
       dark={dark}
       onToggleTheme={() => setDark((value) => !value)}
       status={status}

@@ -1,4 +1,4 @@
-# Library Docs — Cognton Firewall
+# Library Docs — Firewall
 
 Implementation rules for the key libraries. **Always confirm current APIs via Context7 before writing integration code** (Tauri v2 and the Windows crate move fast). Patterns below reflect Tauri **v2**.
 
@@ -84,7 +84,7 @@ await invoke('subscribe_stream', { channel });
 - Parsers must be **panic-free and fuzz-friendly** — malformed packets return `None`/`Err`, never crash. Cover each with byte-fixture tests (`src-tauri/tests/fixtures/`, exercised over every truncation prefix).
 
 ## 4. `windivert` crate + WinDivert 2.x (enforcement engine)
-- Requires the **WinDivert driver/DLL** present and **Admin**. This is the path that makes Cognton a real firewall.
+- Requires the **WinDivert driver/DLL** present and **Admin**. This is the path that makes Firewall a real firewall.
 - Open a handle at the **network layer** with a filter (start broad, refine): receive packet → look up flow/attribution → evaluate against the hot rule set → **drop** (don't reinject) on a matching enabled block rule, else **reinject** unchanged.
 - Open the **SOCKET layer** (flow-established/closed events) to get authoritative **PID ↔ 5-tuple** mapping in real time; feed this into `attribution`.
 - Enforcement runs on its own thread. **Correctness over cleverness:** reinject faithfully; a bug here breaks the user's connectivity. Default action when no rule matches = **allow (reinject)**.

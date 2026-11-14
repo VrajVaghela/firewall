@@ -2,7 +2,7 @@
 
 mod fixtures;
 
-use cognton_lib::{
+use firewall_lib::{
     model::{L7Detail, L7Protocol},
     parse::{self, DecodeContext},
 };

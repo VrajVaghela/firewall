@@ -1,4 +1,4 @@
-# Architecture — Cognton Firewall
+# Architecture — Firewall
 
 ## 1. Technology Stack
 | Layer | Choice | Why |
@@ -49,7 +49,7 @@ Two engines run in parallel:
 
 ## 4. Project Folder Structure
 ```
-cognton/
+firewall/
 ├─ agents.md                      # Master AI instruction manual (root)
 ├─ context/                       # The 9 context files (source of truth)
 │  ├─ project_overview.md

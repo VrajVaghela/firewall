@@ -32,7 +32,7 @@ const ENUMERATE_TIMEOUT: Duration = Duration::from_secs(5);
 pub enum CaptureError {
     #[error("Npcap is unavailable or the driver could not be reached: {0}")]
     Backend(String),
-    #[error("interface enumeration timed out after {}s — is Npcap installed and is Cognton running as Administrator?", ENUMERATE_TIMEOUT.as_secs())]
+    #[error("interface enumeration timed out after {}s — is Npcap installed and is Firewall running as Administrator?", ENUMERATE_TIMEOUT.as_secs())]
     EnumerateTimeout,
     #[error("no capturable network interface was found")]
     NoInterfaces,
@@ -120,7 +120,7 @@ impl CaptureEngine {
         let backend = Arc::clone(&self.backend);
         let (tx, rx) = crossbeam_channel::bounded(1);
         thread::Builder::new()
-            .name("cognton-enumerate".to_owned())
+            .name("firewall-enumerate".to_owned())
             .spawn(move || {
                 let _ = tx.send(backend.list_interfaces());
             })
@@ -169,7 +169,7 @@ impl CaptureEngine {
             let running = Arc::clone(&self.running);
             let interface = interface.clone();
             let label = interface.name.clone();
-            let thread_name = format!("cognton-capture-{}", short_id(&interface.id));
+            let thread_name = format!("firewall-capture-{}", short_id(&interface.id));
             let spawned = thread::Builder::new().name(thread_name).spawn(move || {
                 let name = interface.name.clone();
                 // A capture thread must never panic the app; report and exit cleanly.
@@ -262,7 +262,7 @@ fn default_backend() -> Arc<dyn CaptureBackend> {
     Arc::new(UnsupportedBackend)
 }
 
-/// Cognton targets Windows; this keeps `cargo check` honest on other hosts.
+/// Firewall targets Windows; this keeps `cargo check` honest on other hosts.
 #[cfg(not(windows))]
 struct UnsupportedBackend;
 

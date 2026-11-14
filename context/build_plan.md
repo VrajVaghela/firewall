@@ -1,4 +1,4 @@
-# Build Plan — Cognton Firewall
+# Build Plan — Firewall
 
 Six logical phases, sequenced so each builds on a working foundation. Each phase ends in a **verifiable, runnable** state. Update `progress_tracker.md` as items complete.
 

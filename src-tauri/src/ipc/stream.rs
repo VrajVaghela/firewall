@@ -142,7 +142,7 @@ impl PacketPipeline {
     ) -> std::io::Result<thread::JoinHandle<()>> {
         let contexts = decode_contexts(&interfaces);
         thread::Builder::new()
-            .name("cognton-decode".to_owned())
+            .name("firewall-decode".to_owned())
             .spawn(move || self.run(frames, contexts, dropped_frames, stop))
     }
 

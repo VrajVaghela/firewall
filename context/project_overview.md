@@ -1,7 +1,7 @@
-# Project Overview — Cognton Firewall
+# Project Overview — Firewall
 
 ## 1. Product
-**Cognton** is a local, host-based firewall and network inspector for Windows. It runs as a single native desktop application on the user's laptop, captures **all** internet traffic reaching (and leaving) the machine, decodes it across the full stack (**L2–L7**), attributes every flow to the exact **process and OS user account** responsible, and lets the user **actively block or allow** traffic through rules — all from a clean, minimal, professional dashboard running locally.
+**Firewall** is a local, host-based firewall and network inspector for Windows. It runs as a single native desktop application on the user's laptop, captures **all** internet traffic reaching (and leaving) the machine, decodes it across the full stack (**L2–L7**), attributes every flow to the exact **process and OS user account** responsible, and lets the user **actively block or allow** traffic through rules — all from a clean, minimal, professional dashboard running locally.
 
 It is a **true firewall**, not just a monitor: capture + inspect + enforce.
 
@@ -19,7 +19,7 @@ Give a technical user complete visibility and control over what their machine is
 Assumption: the user is technical, runs the app **with Administrator privileges** (required for capture and enforcement), and is on **Windows 10/11 x64**.
 
 ## 4. Primary User Flow
-1. **Launch** Cognton (elevated). It initializes the capture engine (Npcap) and the enforcement engine (WinDivert), then begins streaming live traffic to the dashboard.
+1. **Launch** Firewall (elevated). It initializes the capture engine (Npcap) and the enforcement engine (WinDivert), then begins streaming live traffic to the dashboard.
 2. **Live Traffic view** shows packets/flows arriving in real time: timestamp, direction, remote host/domain, protocol (L7), process, user, bytes.
 3. User **clicks a packet or flow** → a detail panel decodes it layer by layer: L2 (MAC, EtherType), L3 (IP, TTL, flags), L4 (ports, TCP flags/seq), L7 (DNS query, HTTP host/method, TLS SNI, etc.), plus attribution (process path, PID, user account).
 4. User **filters/searches** (by process, user, remote IP/domain, port, protocol, direction) to isolate what matters.
